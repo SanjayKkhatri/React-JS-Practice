@@ -1,25 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import Profile from './User';
+import React, {useState} from 'react';
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state={
+      show : true
+    }
+  }
+  render() {
+    return (
+      <div className="App">
+        {
+          this.state.show ? <Profile />: <h1>Child Component removed</h1>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        }
+        <button onClick={()=>this.setState({show:!this.state.show})}>Toggle Child Component</button>
+      </div>
+    );
+  }
 }
-
 export default App;
